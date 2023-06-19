@@ -1,12 +1,9 @@
-// Add imports above this line
-import { galleryItems } from './gallery-items';
-// Change code below this line
-
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
+import { galleryItems } from './gallery-items.js';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryEl = document.querySelector('.gallery');
-const instance = basicLightbox.create('<img src="" width="800" height="600">');
+const instance = new SimpleLightbox('.gallery a');
 
 const createItems = () => {
   galleryEl.innerHTML = createImageEl(galleryItems).join('');
