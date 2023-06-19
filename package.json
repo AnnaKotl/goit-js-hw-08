@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "",
   "homepage": "https://AnnaKotl.github.io/goit-js-hw-08",
-  "scripts": {
+    "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /goit-js-hw-08/"
   },
@@ -18,7 +18,8 @@
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "simplelightbox": "^2.14.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
