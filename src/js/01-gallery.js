@@ -1,47 +1,29 @@
-import { galleryItems } from './gallery-items.js';
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+// Add imports above this line
+import { galleryItems } from './gallery-items';
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+// Change code below this line
 
 const galleryEl = document.querySelector('.gallery');
-const instance = new SimpleLightbox('.gallery a');
+const li = document.querySelectorAll('li')
 
-const createItems = () => {
-  galleryEl.innerHTML = createImageEl(galleryItems).join('');
-};
+createImageEl();
 
-const createImageEl = (items) => {
-  return items.map(({ original, preview, description }) => `
-    <li class="gallery__item">
-        <a 
-            class="gallery__link"
-            href="${original}">
-                <img class="gallery__image"
-                    src="${preview}" 
-                    data-source="${original}" 
-                    alt="${description}"
-                />
-        </a>
-    </li>`
+function createImageEl() {
+  const importImage = createImageElements(galleryItems);
+  galleryEl.innerHTML = importImage.join('');
+}
+
+function createImageElements(items) {
+  return items.map( item => `
+    <a class="gallery__link"
+      href="${item.original}">
+      <img class="gallery__image"
+        src="${item.preview}" 
+        data-source="${item.original}" 
+        alt="${item.description}"/>
+    </a>`
   );
-};
+}
 
-galleryEl.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  if (e.target.classList.contains('gallery')) return;
-
-  const { source } = e.target.dataset;
-
-  instance.element().querySelector('img').src = source;
-  instance.show();
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    e.preventDefault();
-    instance.close();
-  }
-});
-
-
-createItems();
+let gallery = new SimpleLightbox('.gallery a');
