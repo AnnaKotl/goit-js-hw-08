@@ -1,3 +1,5 @@
+import '../css/common.css';
+import '../css/03-feedback.css';
 import Player from '@vimeo/player';
 import throttle from 'lodash.throttle';
 
